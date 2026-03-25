@@ -1,0 +1,4 @@
+row_0 susceptible "intermediate-level resistant" "high-level resistant"
+susceptible 936 246 228
+"intermediate-level resistant" 70 95 159
+"high-level resistant" 7 13 53
