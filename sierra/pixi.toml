@@ -1,0 +1,12 @@
+[workspace]
+authors = ["tn211 <72459042+tn211@users.noreply.github.com>"]
+channels = ["conda-forge", "bioconda"]
+name = "sierra"
+platforms = [ "osx-64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+python = "3.6.*"
+pip = ">=21.3.1,<22"

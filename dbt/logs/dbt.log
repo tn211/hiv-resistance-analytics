@@ -1,0 +1,98 @@
+[0m00:49:26.897104 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1053c91c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105cb1430>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105cb1040>]}
+
+
+============================== 00:49:26.899117 | 3787f056-0092-4b64-815a-b4a5c66b809c ==============================
+[0m00:49:26.899117 [info ] [MainThread]: Running with dbt=1.11.7
+[0m00:49:26.899417 [debug] [MainThread]: running dbt with arguments {'log_format': 'default', 'use_experimental_parser': 'False', 'introspect': 'True', 'indirect_selection': 'eager', 'empty': 'None', 'version_check': 'True', 'target_path': 'None', 'no_print': 'None', 'write_json': 'True', 'profiles_dir': '/Users/benzenesea/.dbt', 'static_parser': 'True', 'debug': 'False', 'send_anonymous_usage_stats': 'True', 'fail_fast': 'False', 'partial_parse': 'True', 'warn_error': 'None', 'invocation_command': 'dbt init hiv_analytics', 'log_path': 'logs', 'printer_width': '80', 'quiet': 'False', 'use_colors': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_cache_events': 'False', 'cache_selected_only': 'False'}
+[0m00:49:26.904732 [debug] [MainThread]: Starter project path: /Users/benzenesea/Desktop/hiv-resistance-analytics/.venv/lib/python3.12/site-packages/dbt/include/starter_project
+[0m00:49:26.908539 [info ] [MainThread]: 
+Your new dbt project "hiv_analytics" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m00:49:26.908731 [info ] [MainThread]: Setting up your profile.
+[0m00:49:36.721808 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 9.865101, "process_in_blocks": "0", "process_kernel_time": 0.120124, "process_mem_max_rss": "127926272", "process_out_blocks": "0", "process_user_time": 1.103879}
+[0m00:49:36.722780 [debug] [MainThread]: Command `dbt init` succeeded at 00:49:36.722639 after 9.87 seconds
+[0m00:49:36.723255 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105c07050>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1053c91c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105cb15e0>]}
+[0m00:49:36.723754 [debug] [MainThread]: Flushing usage events
+[0m00:49:37.685964 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m00:49:47.210508 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106241790>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106c4d730>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106c4d340>]}
+
+
+============================== 00:49:47.212576 | ec044326-7488-455a-adfc-12088ab5bca0 ==============================
+[0m00:49:47.212576 [info ] [MainThread]: Running with dbt=1.11.7
+[0m00:49:47.212873 [debug] [MainThread]: running dbt with arguments {'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'write_json': 'True', 'fail_fast': 'False', 'log_cache_events': 'False', 'log_path': 'logs', 'target_path': 'None', 'static_parser': 'True', 'debug': 'False', 'use_colors': 'True', 'indirect_selection': 'eager', 'send_anonymous_usage_stats': 'True', 'log_format': 'default', 'partial_parse': 'True', 'version_check': 'True', 'cache_selected_only': 'False', 'use_experimental_parser': 'False', 'introspect': 'True', 'printer_width': '80', 'empty': 'None', 'profiles_dir': '/Users/benzenesea/.dbt', 'invocation_command': 'dbt init hiv_analytics', 'warn_error': 'None'}
+[0m00:49:47.217319 [info ] [MainThread]: A project called hiv_analytics already exists here.
+[0m00:49:47.217623 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 0.045710668, "process_in_blocks": "0", "process_kernel_time": 0.114362, "process_mem_max_rss": "126763008", "process_out_blocks": "0", "process_user_time": 1.100774}
+[0m00:49:47.217850 [debug] [MainThread]: Command `dbt init` succeeded at 00:49:47.217804 after 0.05 seconds
+[0m00:49:47.217996 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105e4d190>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106241790>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106ba33b0>]}
+[0m00:49:47.218142 [debug] [MainThread]: Flushing usage events
+[0m00:49:47.894361 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m00:50:16.908015 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10794a330>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10605eba0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10605eb10>]}
+
+
+============================== 00:50:16.909976 | 9d1b88f1-44e5-44a9-9a5d-29ef7fd13a94 ==============================
+[0m00:50:16.909976 [info ] [MainThread]: Running with dbt=1.11.7
+[0m00:50:16.910262 [debug] [MainThread]: running dbt with arguments {'write_json': 'True', 'indirect_selection': 'eager', 'no_print': 'None', 'cache_selected_only': 'False', 'log_path': 'logs', 'warn_error': 'None', 'log_format': 'default', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'printer_width': '80', 'introspect': 'True', 'fail_fast': 'False', 'log_cache_events': 'False', 'version_check': 'True', 'partial_parse': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'empty': 'None', 'quiet': 'False', 'profiles_dir': '/Users/benzenesea/.dbt', 'send_anonymous_usage_stats': 'True', 'invocation_command': 'dbt debug', 'static_parser': 'True', 'target_path': 'None'}
+[0m00:50:16.914524 [info ] [MainThread]: dbt version: 1.11.7
+[0m00:50:16.914696 [info ] [MainThread]: python version: 3.12.12
+[0m00:50:16.914830 [info ] [MainThread]: python path: /Users/benzenesea/Desktop/hiv-resistance-analytics/.venv/bin/python3
+[0m00:50:16.914952 [info ] [MainThread]: os info: macOS-15.7.4-arm64-arm-64bit
+[0m00:50:16.968281 [info ] [MainThread]: Using profiles dir at /Users/benzenesea/.dbt
+[0m00:50:16.968494 [info ] [MainThread]: Using profiles.yml file at /Users/benzenesea/.dbt/profiles.yml
+[0m00:50:16.968633 [info ] [MainThread]: Using dbt_project.yml file at /Users/benzenesea/Desktop/hiv-resistance-analytics/dbt/dbt_project.yml
+[0m00:50:16.969496 [info ] [MainThread]: adapter type: duckdb
+[0m00:50:16.969626 [info ] [MainThread]: adapter version: 1.10.1
+[0m00:50:16.969753 [info ] [MainThread]: Configuration:
+[0m00:50:16.969872 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m00:50:16.969979 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m00:50:16.970115 [info ] [MainThread]: Required dependencies:
+[0m00:50:16.970265 [debug] [MainThread]: Executing "git --help"
+[0m00:50:16.976261 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Set `HEAD` or the index to a known state\n   switch     Switch branches\n   tag        Create, list, delete or verify tags\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m00:50:16.976644 [debug] [MainThread]: STDERR: "b''"
+[0m00:50:16.976780 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m00:50:16.976920 [info ] [MainThread]: Connection:
+[0m00:50:16.977095 [info ] [MainThread]:   database: hivdb_resistance
+[0m00:50:16.977206 [info ] [MainThread]:   schema: main
+[0m00:50:16.977314 [info ] [MainThread]:   path: /Users/benzenesea/Desktop/hiv-resistance-analytics/ingestion/hivdb_resistance.duckdb
+[0m00:50:16.977416 [info ] [MainThread]:   config_options: None
+[0m00:50:16.977518 [info ] [MainThread]:   extensions: None
+[0m00:50:16.977616 [info ] [MainThread]:   settings: {}
+[0m00:50:16.977717 [info ] [MainThread]:   external_root: .
+[0m00:50:16.977817 [info ] [MainThread]:   use_credential_provider: None
+[0m00:50:16.977928 [info ] [MainThread]:   attach: None
+[0m00:50:16.978026 [info ] [MainThread]:   filesystems: None
+[0m00:50:16.978122 [info ] [MainThread]:   remote: None
+[0m00:50:16.978220 [info ] [MainThread]:   plugins: None
+[0m00:50:16.978320 [info ] [MainThread]:   disable_transactions: False
+[0m00:50:16.978565 [info ] [MainThread]: Registered adapter: duckdb=1.10.1
+[0m00:50:17.029777 [debug] [MainThread]: Acquiring new duckdb connection 'debug'
+[0m00:50:17.068343 [debug] [MainThread]: Using duckdb connection "debug"
+[0m00:50:17.068502 [debug] [MainThread]: On debug: select 1 as id
+[0m00:50:17.068619 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m00:50:17.091671 [debug] [MainThread]: SQL status: OK in 0.023 seconds
+[0m00:50:17.092119 [debug] [MainThread]: On debug: Close
+[0m00:50:17.092280 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m00:50:17.092420 [info ] [MainThread]: [31m1 check failed:[0m
+[0m00:50:17.092529 [info ] [MainThread]: Project loading failed for the following reason:
+ project path </Users/benzenesea/Desktop/hiv-resistance-analytics/dbt/dbt_project.yml> not found
+
+[0m00:50:17.092779 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 0.22341846, "process_in_blocks": "0", "process_kernel_time": 0.165547, "process_mem_max_rss": "164823040", "process_out_blocks": "0", "process_user_time": 1.208023}
+[0m00:50:17.092989 [debug] [MainThread]: Command `dbt debug` failed at 00:50:17.092949 after 0.22 seconds
+[0m00:50:17.093123 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m00:50:17.093255 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107ab4e60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107ab7350>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10794a330>]}
+[0m00:50:17.093421 [debug] [MainThread]: Flushing usage events
+[0m00:50:17.731117 [debug] [MainThread]: An error was encountered while trying to flush usage events

@@ -1,0 +1,40 @@
+services:
+  kestra:
+    image: kestra/kestra:latest
+    pull_policy: always
+    user: "root"
+    command: server local
+    environment:
+      KESTRA_CONFIGURATION: |
+        kestra:
+          server:
+            basicAuth:
+              username: "admin@kestra.io"
+              password: Admin1234!
+          repository:
+            type: h2
+          storage:
+            type: local
+            local:
+              basePath: "/app/storage"
+          queue:
+            type: h2
+          tasks:
+            tmpDir:
+              path: /tmp/kestra-wd/tmp
+          url: http://localhost:8080/
+          flows:
+            path: /app/flows  # THIS TELLS KESTRA WHERE YOUR FLOWS ARE
+    ports:
+      - "8080:8080"
+    volumes:
+      - kestra_data:/app/storage
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./flows:/app/flows
+      - kestra_tmp:/tmp/kestra-wd
+
+volumes:
+  kestra_data:
+    driver: local
+  kestra_tmp:
+    driver: local
