@@ -1,1 +1,3 @@
 *.pem
+*.csv
+*.parquet
