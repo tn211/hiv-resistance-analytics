@@ -11,3 +11,10 @@ Next, I used `boto3` (Amazon AWS's [Python API](https://aws.amazon.com/sdk-for-p
 Now that data is loaded, `dbt` will be used perform transformations. Once I have my final datasets and have identified which analytics I want to present to my audience, I will upload my final tables into [`Supabase`](https://supabase.com/). I am already familiar with this platform and have used it to built apps in the past, so it was a natural choice for me. At its core, Supabase provides a cloud-based Postgres database (which actually uses AWS under the hood). And then its Javascript/Python APIs make it easy to develop frontends and attach them to PG backends. In this case, I'm planning on using Streamlit to build my dashboard. 
 
 ## Instructions:
+
+1. Clone the repo and navigate to the root directory (`/hiv-resistance-analytics/`). Run `uv sync` to install all dependencies.
+2. Run `terraform apply` to provision resources (note: you need to setup the AWS + Supabase accounts first, if you don't have them yet.)
+3. Navigate to the `/orchestration/` directory and run `docker compose up -d`to start the Kestra instance. All of the workflows can be found in `/orchestration/flows` in case Kestra does not see them automatically.
+4. Run the `hiv_pipeline.yml` flow to begin pipeline orchestration.
+5. Once it's completed, login to Athena to check on your tables.
+6. Now you're ready to transform data using `dbt` and the AWS API.
