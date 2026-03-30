@@ -1,6 +1,6 @@
 # hiv-resistance-analytics
 
-This is still a work in progress, but the gist of my project is a data engineering pipeline and analytics engine using HIV drug resistance data from Sanford University's [HIVDB](https://hivdb.stanford.edu/). Eventually, I plan on piping in supplementary data from chemical and/or pharmacology database(s), but the Sanford dataset will comprise the core of my data lakehouse.
+This is still a work in progress, but the gist of my project is a data engineering pipeline and analytics engine using HIV drug resistance data from Stanford University's [HIVDB](https://hivdb.stanford.edu/). Eventually, I plan on piping in supplementary data from chemical and/or pharmacology database(s), but the Stanford dataset will comprise the core of my data lakehouse.
 
 I've used `Terraform` to automate resource provisioning, and then `Kestra` will be used for the actual orchestration once the resources are online. Additionally, `Docker` will be used for reproducibility and for hosing my Kestra instance. I used `dlt` to extract the datasets from HIVDB's servers into a local `duckDB` database. 
 
