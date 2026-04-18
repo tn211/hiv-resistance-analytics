@@ -84,6 +84,7 @@ st.markdown("""
 @st.cache_resource
 def get_session():
     return boto3.Session(
+    region_name=st.secrets["hiv-project"]["region_name"],
     aws_access_key_id=st.secrets["hiv-project"]["aws_access_key_id"],
     aws_secret_access_key=st.secrets["hiv-project"]["aws_secret_access_key"]
     )
