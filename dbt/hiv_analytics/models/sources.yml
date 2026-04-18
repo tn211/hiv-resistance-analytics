@@ -1,12 +1,12 @@
 version: 2
 
 sources:
-  - name: hiv_analysis
-    database: hiv_analysis
-    schema: hiv_analysis
+  - name: hivdb
+    database: AwsDataCatalog
+    schema: hivdb_tce
     tables:
-      - name: genotype_phenotype_pi
-      - name: genotype_phenotype_nrti
-      - name: genotype_phenotype_nnrti
-      - name: genotype_phenotype_ini
-      - name: genotype_phenotype_cai
+      - name: tce_measurements
+      - name: tce_case
+      - name: tce_isolates
+      - name: tce_mutations
+      - name: tce_treatments

@@ -1,3 +1,7 @@
 *.pem
 *.csv
 *.parquet
+*.xml
+*.tar
+*.gz
+*.tar.gz

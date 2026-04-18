@@ -5,13 +5,17 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "awswrangler>=3.16.0",
     "boto3>=1.42.77",
     "dbt-athena>=1.10.0",
     "dbt-duckdb>=1.10.1",
     "dlt[duckdb]>=1.24.0",
+    "gdown>=6.0.0",
     "ipykernel>=7.2.0",
     "jupyter>=1.1.1",
+    "kaleido>=1.2.0",
     "pandas>=3.0.1",
+    "plotly[express]>=6.7.0",
     "polars>=1.39.3",
     "prefect>=3.6.23",
     "pyarrow>=23.0.1",
