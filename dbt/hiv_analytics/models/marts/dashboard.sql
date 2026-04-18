@@ -23,7 +23,9 @@ select
     r.contains_pi,
     r.contains_nrti,
     r.contains_nnrti,
-    r.contains_insti
+    r.contains_insti,
+    r.contains_cri,
+    r.contains_fi
 
 from {{ ref('fact_tce') }} f
 join {{ ref('dim_time') }} t

@@ -17,10 +17,12 @@ agg as (
         treatment_type,
         count(distinct drug_code) as drug_count,
 
-        max(case when drug_class = 'PI' then 1 else 0 end) as contains_pi,
+        max(case when drug_class = 'PI'   then 1 else 0 end) as contains_pi,
         max(case when drug_class = 'NRTI' then 1 else 0 end) as contains_nrti,
         max(case when drug_class = 'NNRTI' then 1 else 0 end) as contains_nnrti,
-        max(case when drug_class = 'INSTI' then 1 else 0 end) as contains_insti,
+        max(case when drug_class = 'INI'  then 1 else 0 end) as contains_insti,
+        max(case when drug_class = 'CRI'  then 1 else 0 end) as contains_cri,
+        max(case when drug_class = 'FI'   then 1 else 0 end) as contains_fi,
         array_join(array_sort(array_agg(distinct drug_code)), '+') as regimen_signature
 
     from base
@@ -37,5 +39,7 @@ select
     contains_nrti,
     contains_nnrti,
     contains_insti,
+    contains_cri,
+    contains_fi,
     regimen_signature
 from agg
