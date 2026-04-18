@@ -6,3 +6,4 @@
 *.gz
 *.tar.gz
 .DS_Store
+secrets.toml
