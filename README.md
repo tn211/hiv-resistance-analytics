@@ -24,7 +24,7 @@ Now that data is loaded, `dbt` will be used perform transformations. Once I have
 Here is a sample screenshot of my 2-tile analytics dashboard, which was created using the Plotly and Streamlit libraries. The [dashboard is hosted](https://appdashboardpy-s3yzguguluurcbwe6rr46y.streamlit.app/) as a live, interactive web-app on the Streamlit Community Cloud. It contains a donut plot tracking the most common ARV drug class combinations prescribed to patients after a TCE. It also shows a line graph of the frequency of TCEs by year, from 1997 to 2010 only. Note that this is simply the frequency of TCEs captured in the dataset, which is not necessarily representative of broader epidemiological trends. However, the fact that TCEs peaked in 1999, which is early on after the introduction of HAART (highly-active anti-retroviral therapy) regimens makes sense as treatments have only become more effective in subsequent years.
 
 <figure>
-  <img src="./assets/dashboard.png" style="width:100%; max-width:700px; height:auto;" />
+  <img src="./assets/dashboard_screenshot.png" style="width:100%; max-width:700px; height:auto;" />
   <figcaption>
     <p><strong>Figure 1:</strong> Screenshot of the dashboard on Streamlit Community Cloud.</p>
   </figcaption>
