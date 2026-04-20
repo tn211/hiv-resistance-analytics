@@ -4,9 +4,9 @@
 
 ## Problem Statement
 
-HIV/AIDS therapies have improved by leaps and bounds since the early stages of the pandemic, when treatments (such as AZT monotherapy) were either ineffective or were accompanied by burdensome side-effects that lowered quality of life. However, there are still situations where patients need to switch regimens due to inadequate response. HIV is known to rapidly mutate, and these genetic changes sometimes confer resistance to one or more antiretroviral drugs (ARVs). In the interests of public health, genomics, and drug development, various research groups around the world monitor ARV resistance. 
+HIV/AIDS therapies have improved by leaps and bounds since the early stages of the pandemic, when treatments (such as AZT monotherapy) were either ineffective or were accompanied by burdensome side-effects that lowered quality of life. However, there are still situations where patients need to switch regimens due to inadequate response. HIV is known to rapidly mutate, and these genetic changes sometimes confer resistance to one or more antiretroviral drugs (ARVs). In the interests of public health, genomics, and drug development, various research groups around the world monitor this type of ARV resistance. 
 
-One such group at Stanford University maintains the HIV Drug Resistance Database (HIVDB). HIVDB (Fig. 1) contains many resources for researchers, including a repository of Treatment Change Episodes (TCEs), where individual patients, their clinical metrics (viral load, CD4 count, etc.), and their drug regimens are stored as a catalogue of XML files. (Note: while I do not have permission to redistribute this dataset, anybody who registers as an HIVDB user and emails the admin can be granted access.)
+One such group at Stanford University maintains the [HIV Drug Resistance Database (HIVDB)](https://hivdb.stanford.edu/). HIVDB (Fig. 1) contains many resources for researchers, including a repository of Treatment Change Episodes (TCEs), where individual patients, their clinical metrics (viral load, CD4 count, etc.), and their drug regimens are stored as a catalogue of XML files. (Note: while I do not have permission to redistribute this dataset, anybody who registers as an HIVDB user and emails the admin can be granted access.)
 
 <figure>
   <img src="./assets/hivdb.png" style="width:100%; max-width:700px; height:auto;" />
