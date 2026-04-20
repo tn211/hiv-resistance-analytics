@@ -25,7 +25,6 @@ def parse_all(xml_path):
     mutations = []
     treatments = []
 
-    # measurements
     for tag, mtype, val_fields in [
         ("baselineRNA", "RNA", ["logLoad", "rawLoad"]),
         ("pastRNA", "RNA", ["logLoad", "rawLoad"]),
@@ -49,7 +48,6 @@ def parse_all(xml_path):
                         "value_type": vf
                     })
 
-    # isolates + mutations
     for tag, itype in [("baselineIsolate", "baseline"), ("pastIsolate", "past")]:
         for i, iso in enumerate(root.findall(f".//{tag}")):
             iso_id = f"{filename}_{itype}_{i}"
@@ -81,7 +79,6 @@ def parse_all(xml_path):
                     "mixtures": mut.findtext("mixtures"),
                 })
 
-    # treatments — NEW (baseline)
     for tnode in root.findall(".//baselineNewTreatment"):
         start = tnode.findtext("relativeStartDate")
         stop = tnode.findtext("relativeStopDate")
@@ -98,7 +95,6 @@ def parse_all(xml_path):
                 "treatment_type": "new"
             })
 
-    # treatments — ADD THIS (past)
     for tnode in root.findall(".//pastRegimenTreatments"):
         start = tnode.findtext("relativeStartDate")
         stop = tnode.findtext("relativeStopDate")

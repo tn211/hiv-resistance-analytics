@@ -42,7 +42,8 @@ def main():
 
     for f in xml_files:
         try:
-            case_rows, measurements, isolates, mutations, treatments = parse_all(f)
+            case_rows, measurements, isolates, mutations, treatments = parse_all(
+                f)
             all_cases.extend(case_rows)
             all_measurements.extend(measurements)
             all_isolates.extend(isolates)
@@ -57,7 +58,8 @@ def main():
     df_mutations = pl.DataFrame(all_mutations)
     df_treatments = pl.DataFrame(all_treatments)
 
-    for key, subdf in df_measurements.partition_by("measurement_type", as_dict=True).items():
+    for key, subdf in df_measurements.partition_by("measurement_type",
+                                                   as_dict=True).items():
         measurement_val = key[0] if isinstance(key, tuple) else key
         subdf = subdf.drop("measurement_type")
         subdf.write_parquet(
@@ -66,15 +68,23 @@ def main():
         )
 
     df_case.write_parquet("data/parquet/tce_case/data.parquet", mkdir=True)
-    df_isolates.write_parquet("data/parquet/tce_isolates/data.parquet", mkdir=True)
-    df_mutations.write_parquet("data/parquet/tce_mutations/data.parquet", mkdir=True)
-    df_treatments.write_parquet("data/parquet/tce_treatments/data.parquet", mkdir=True)
+    df_isolates.write_parquet("data/parquet/tce_isolates/data.parquet",
+                              mkdir=True)
+    df_mutations.write_parquet("data/parquet/tce_mutations/data.parquet",
+                               mkdir=True)
+    df_treatments.write_parquet("data/parquet/tce_treatments/data.parquet",
+                                mkdir=True)
 
-    upload_to_s3("data/parquet/tce_measurements/", bucket_name, "hivdb-tce/tce_measurements/", s3)
-    upload_to_s3("data/parquet/tce_case/", bucket_name, "hivdb-tce/tce_case/", s3)
-    upload_to_s3("data/parquet/tce_isolates/", bucket_name, "hivdb-tce/tce_isolates/", s3)
-    upload_to_s3("data/parquet/tce_mutations/", bucket_name, "hivdb-tce/tce_mutations/", s3)
-    upload_to_s3("data/parquet/tce_treatments/", bucket_name, "hivdb-tce/tce_treatments/", s3)
+    upload_to_s3("data/parquet/tce_measurements/", bucket_name,
+                 "hivdb-tce/tce_measurements/", s3)
+    upload_to_s3("data/parquet/tce_case/", bucket_name, "hivdb-tce/tce_case/",
+                 s3)
+    upload_to_s3("data/parquet/tce_isolates/", bucket_name,
+                 "hivdb-tce/tce_isolates/", s3)
+    upload_to_s3("data/parquet/tce_mutations/", bucket_name,
+                 "hivdb-tce/tce_mutations/", s3)
+    upload_to_s3("data/parquet/tce_treatments/", bucket_name,
+                 "hivdb-tce/tce_treatments/", s3)
 
 
 if __name__ == "__main__":

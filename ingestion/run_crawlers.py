@@ -9,6 +9,7 @@ CRAWLERS = [
     "tce_treatments_crawler",
 ]
 
+
 def run_all_crawlers_and_wait():
     session = boto3.Session(profile_name="hiv-project")
     glue = session.client("glue", region_name="us-east-1")
