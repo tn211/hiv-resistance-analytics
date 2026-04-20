@@ -89,7 +89,7 @@ Here is a sample screenshot (Figure 3) of my 2-tile analytics dashboard, which w
 <figure>
   <img src="./assets/crawlers.png" style="width:100%; max-width:700px; height:auto;" />
   <figcaption>
-    <p><strong>Figure 5:</strong> Screenshot of the Glue crawlers overview.</p>
+    <p><strong>Figure 4:</strong> Screenshot of the Glue crawlers overview.</p>
   </figcaption>
 </figure>
 
