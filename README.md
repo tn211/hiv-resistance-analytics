@@ -85,3 +85,24 @@ Here is a sample screenshot (Figure 3) of my 2-tile analytics dashboard, which w
 4. Run the `hiv_pipeline.yml` flow to begin pipeline orchestration.
 5. Once it's completed, login to Athena to check on your tables.
 6. Now you're ready to transform data using `dbt` and the AWS API.
+
+<figure>
+  <img src="./assets/crawlers.png" style="width:100%; max-width:700px; height:auto;" />
+  <figcaption>
+    <p><strong>Figure 5:</strong> Screenshot of the Glue crawlers overview.</p>
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="./assets/kestra.png" style="width:100%; max-width:700px; height:auto;" />
+  <figcaption>
+    <p><strong>Figure 5:</strong> Screenshot of a successful Kestra run.</p>
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="./assets/kestra_streamlit.png" style="width:100%; max-width:700px; height:auto;" />
+  <figcaption>
+    <p><strong>Figure 6:</strong> Screenshot showing which link to clink to open the Streamlit app in your browser.</p>
+  </figcaption>
+</figure>
