@@ -92,7 +92,7 @@ Here is a sample screenshot (Figure 3) of my 2-tile analytics dashboard, which w
   </figcaption>
 </figure>
 
-4. Navigate to the `/orchestration/` directory and run `docker compose up -d`to start the Kestra instance. Navigate to the flows tab an choose the hiv analytics flow, then press execute.
+4. Navigate to the `/orchestration/` directory and run `docker compose up -d`to start the Kestra instance. Navigate to the flows tab and choose the hiv analytics flow, then press execute.
 
 <figure>
   <img src="./assets/kestra.png" style="width:100%; max-width:700px; height:auto;" />
