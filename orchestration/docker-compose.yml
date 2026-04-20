@@ -1,41 +1,33 @@
 services:
   kestra:
     image: kestra/kestra:latest
-    pull_policy: always
     user: "root"
     command: server local
+    ports:
+      - "8080:8080"
+      - "8501:8501"
+    volumes:
+      - kestra-data:/app/storage
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${PROJECT_ROOT}:/app/hiv-resistance-analytics
+      - ${AWS_DIR}:/root/.aws:ro
+      - ${DBT_DIR}:/root/.dbt:ro
+      - ${HOME}/.streamlit:/root/.streamlit:ro
     environment:
       KESTRA_CONFIGURATION: |
         kestra:
-          server:
-            basicAuth:
-              username: "admin@kestra.io"
-              password: Admin1234!
-          repository:
-            type: h2
-          storage:
-            type: local
-            local:
-              basePath: "/app/storage"
-          queue:
-            type: h2
-          tasks:
-            tmpDir:
-              path: /tmp/kestra-wd/tmp
-          url: http://localhost:8080/
-          flows:
-            path: /app/flows
-    ports:
-      - "8080:8080"
-    volumes:
-      - kestra_data:/app/storage
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ./flows:/app/flows
-      - ../:/app/project
-      - kestra_tmp:/tmp/kestra-wd
+          local-files:
+            allowed-paths:
+              - /app/hiv-resistance-analytics
+            tutorial:
+              enabled: false
+
+        micronaut:
+          io:
+            watch:
+              enabled: true
+              paths:
+                - /app/hiv-resistance-analytics/orchestration/flows
 
 volumes:
-  kestra_data:
-    driver: local
-  kestra_tmp:
-    driver: local
+  kestra-data:

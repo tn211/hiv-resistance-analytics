@@ -1,0 +1,87 @@
+id: hiv_analytics_pipeline
+namespace: dev.local
+
+tasks:
+  - id: run_ingestion
+    type: io.kestra.plugin.scripts.python.Commands
+    taskRunner:
+      type: io.kestra.plugin.core.runner.Process
+    env:
+      UV_LINK_MODE: copy
+      UV_PROJECT_ENVIRONMENT: /tmp/hiv-uv-env
+      AWS_PROFILE: hiv-project
+    beforeCommands:
+      - pip install uv >/dev/null 2>&1
+      - cd /app/hiv-resistance-analytics
+    commands:
+      - uv run python ingestion/s3_ingestion_script.py
+
+  - id: run_create_crawlers
+    type: io.kestra.plugin.scripts.python.Commands
+    taskRunner:
+      type: io.kestra.plugin.core.runner.Process
+    env:
+      UV_LINK_MODE: copy
+      UV_PROJECT_ENVIRONMENT: /tmp/hiv-uv-env
+      AWS_PROFILE: hiv-project
+    beforeCommands:
+      - pip install uv >/dev/null 2>&1
+      - cd /app/hiv-resistance-analytics
+    commands:
+      - uv run python ingestion/create_crawlers.py
+
+  - id: run_crawlers_execute
+    type: io.kestra.plugin.scripts.python.Commands
+    taskRunner:
+      type: io.kestra.plugin.core.runner.Process
+    env:
+      UV_LINK_MODE: copy
+      UV_PROJECT_ENVIRONMENT: /tmp/hiv-uv-env
+      AWS_PROFILE: hiv-project
+    beforeCommands:
+      - pip install uv >/dev/null 2>&1
+      - cd /app/hiv-resistance-analytics
+    commands:
+      - uv run python ingestion/run_crawlers.py
+
+  - id: run_dbt
+    type: io.kestra.plugin.scripts.python.Commands
+    taskRunner:
+      type: io.kestra.plugin.core.runner.Process
+    env:
+      UV_LINK_MODE: copy
+      UV_PROJECT_ENVIRONMENT: /tmp/hiv-uv-env
+      AWS_PROFILE: hiv-project
+    beforeCommands:
+      - pip install uv >/dev/null 2>&1
+      - cd /app/hiv-resistance-analytics/dbt/hiv_analytics
+    commands:
+      - uv run dbt run
+
+  - id: delete_crawlers_execute
+    type: io.kestra.plugin.scripts.python.Commands
+    taskRunner:
+      type: io.kestra.plugin.core.runner.Process
+    env:
+      UV_LINK_MODE: copy
+      UV_PROJECT_ENVIRONMENT: /tmp/hiv-uv-env
+      AWS_PROFILE: hiv-project
+    beforeCommands:
+      - pip install uv >/dev/null 2>&1
+      - cd /app/hiv-resistance-analytics
+    commands:
+      - uv run python ingestion/delete_crawlers.py
+
+  - id: run_streamlit
+    type: io.kestra.plugin.scripts.python.Commands
+    taskRunner:
+      type: io.kestra.plugin.core.runner.Process
+    env:
+      UV_LINK_MODE: copy
+      UV_PROJECT_ENVIRONMENT: /tmp/hiv-uv-env
+      AWS_PROFILE: hiv-project
+    beforeCommands:
+      - pip install uv >/dev/null 2>&1
+      - cd /app/hiv-resistance-analytics
+    commands:
+      - uv run streamlit run /app/hiv-resistance-analytics/dashboard/streamlit_dashboard.py --server.address 0.0.0.0 --server.port 8501

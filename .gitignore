@@ -7,3 +7,5 @@
 *.tar.gz
 .DS_Store
 secrets.toml
+terraform.tfvars
+*.auto.tfvars
