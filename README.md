@@ -79,12 +79,11 @@ Here is a sample screenshot (Figure 3) of my 2-tile analytics dashboard, which w
 
 ## Instructions:
 
-1. Clone the repo and navigate to the root directory (`/hiv-resistance-analytics/`). Run `uv sync` to install all dependencies.
-2. Run `terraform apply` to provision resources (note: you need to setup the AWS + Supabase accounts first, if you don't have them yet.)
-3. Navigate to the `/orchestration/` directory and run `docker compose up -d`to start the Kestra instance. All of the workflows can be found in `/orchestration/flows` in case Kestra does not see them automatically.
-4. Run the `hiv_pipeline.yml` flow to begin pipeline orchestration.
-5. Once it's completed, login to Athena to check on your tables.
-6. Now you're ready to transform data using `dbt` and the AWS API.
+1. Clone this repo and navigate to the root directory (`/hiv-resistance-analytics/`).
+
+2. Set up an AWS account if you do not already have one. You also need to visit `orchestration/.env` and populate the fields with details about your local environment so that Kestra can find your secrets.
+
+3. You can either provision AWS resources manually or tun `terraform apply` to have it provision resources for you.
 
 <figure>
   <img src="./assets/crawlers.png" style="width:100%; max-width:700px; height:auto;" />
@@ -93,12 +92,16 @@ Here is a sample screenshot (Figure 3) of my 2-tile analytics dashboard, which w
   </figcaption>
 </figure>
 
+4. Navigate to the `/orchestration/` directory and run `docker compose up -d`to start the Kestra instance. Navigate to the flows tab an choose the hiv analytics flow, then press execute.
+
 <figure>
   <img src="./assets/kestra.png" style="width:100%; max-width:700px; height:auto;" />
   <figcaption>
     <p><strong>Figure 5:</strong> Screenshot of a successful Kestra run.</p>
   </figcaption>
 </figure>
+   
+5. Click the link in the logs to view the Streamlit app. 
 
 <figure>
   <img src="./assets/kestra_streamlit.png" style="width:100%; max-width:700px; height:auto;" />
@@ -106,3 +109,7 @@ Here is a sample screenshot (Figure 3) of my 2-tile analytics dashboard, which w
     <p><strong>Figure 6:</strong> Screenshot showing which link to clink to open the Streamlit app in your browser.</p>
   </figcaption>
 </figure>
+
+
+
+
