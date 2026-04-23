@@ -87,7 +87,7 @@ Here is a sample screenshot (Fig. 3) of my 2-tile analytics dashboard, which was
 
 3. You can either provision AWS resources manually or run `terraform apply` to have it provision resources for you.
 
-4. Navigate to the `/orchestration/` directory and run `docker compose up -d` to start the Kestra instance. Navigate to the flows tab and choose the `hiv_analytics_pipeline` flow, then press execute. When all 6 tasks of the flow have executed (Fig. 4), 
+4. Navigate to the `/orchestration/` directory and run `docker compose up -d` to start the Kestra instance. Navigate to the flows tab and choose the `hiv_analytics_pipeline` flow, then press execute. When all 6 tasks of the flow have executed (Fig. 4), the Glue crawlers will have been deleted and you'll be left with a Streamlit dashboard that uses Athena as its backend. 
 
 <figure>
   <img src="./assets/kestra.png" style="width:100%; max-width:700px; height:auto;" />
