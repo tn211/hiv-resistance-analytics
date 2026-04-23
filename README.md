@@ -1,4 +1,4 @@
-# hiv-resistance-analytics
+# HIV Resistance Analytics
 
  (**Note:** This repository has been updated since I made my final submission for the Data Engineering Zoomcamp. I've fixed some typos and other issues since then. [Click here](https://github.com/tn211/hiv-resistance-analytics/tree/c727521) to view the final commit I made before the deadline.)
 
