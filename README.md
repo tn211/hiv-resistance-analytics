@@ -41,11 +41,11 @@ I set out to engineer an end-to-end analytics pipeline that performs the followi
 
 ## Architecture
 
-I opted to use the AWS ecosystem as scaffolding for my basic ETL pipeline. After converting and aggregating the raw XML files into 5 Parquet files, the dataset was ingested into an [S3](https://aws.amazon.com/s3/) storage bucket. Next, [Glue](https://aws.amazon.com/glue/) crawlers were initialized for each Parquet directory and they set to work on interpreting the data structures and rendering them as tables. The tables were then loaded into [Athena](https://aws.amazon.com/athena/), where the resulting schema could be queried by SQL. The tripartite stack of S3 + Glue + Athena can be conceptualized as a "lakehouse"-style architecture, where the lines are blurred between traditional data lake and data warehouse functionality. One additional advantage of using Athena is that, like Google BigQuery, it is a serverless analytics engine, which eliminates the hassle of managing compute resources. 
+I opted to use the AWS ecosystem as scaffolding for my basic ELT pipeline. After converting and aggregating the raw XML files into 5 Parquet files, the dataset was ingested into an [S3](https://aws.amazon.com/s3/) storage bucket. Next, [Glue](https://aws.amazon.com/glue/) crawlers were initialized for each Parquet directory and they set to work on interpreting the data structures and rendering them as tables. The tables were then loaded into [Athena](https://aws.amazon.com/athena/), where the resulting schema could be queried by SQL. The tripartite stack of S3 + Glue + Athena can be conceptualized as a "lakehouse"-style architecture, where the lines are blurred between traditional data lake and data warehouse functionality. One additional advantage of using Athena is that, like Google BigQuery, it is a serverless analytics engine, which eliminates the hassle of managing compute resources. 
 
 Once the schema were instantiated in Athena, an analytics layer was developed using the [dbt](https://www.getdbt.com/) platform. The `dbt-athena` [adapter](https://docs.getdbt.com/docs/local/connect-data-platform/athena-setup?version=1.10) allowed me to perform all these operations in my local development environment. The final analytics layer consisted of a simplistic star schema 'mart' architecture, with 1 'fact' table informed by 2 'dimensions' (drug regimens and time). This provided enough information to generate a 2-tile dashboard showing trends in regimens prescribed in response to TCE and changes in TCE frequency over time. The individual visualizations were prototyped using [Plotly](https://plotly.com/) before being turned into an interactive dashboard web-app using [Streamlit](https://streamlit.io/). Finally, Streamlit [Community Cloud](https://streamlit.io/cloud) was used to publish the [live web-app](https://appdashboardpy-s3yzguguluurcbwe6rr46y.streamlit.app/), while also providing simple CI/CD functionality alongside GitHub.
 
-After developing the individual components, they were joined into a pipeline using a [Kestra](https://kestra.io/) flow for orchestration. When the [Docker](https://www.docker.com/) container is run, the entire repository is mounted as a volume inside Kestra. The [uv package manager](https://docs.astral.sh/uv/) is used for easy reproducibility, so when a user runs the flow all dependencies are automatically added to the Docker container. The Kestra flow handles every step of the ETL pipeline, followed by the dbt transformations, before running the Streamlit app inside the container. Kestra's routing features expose the correct ports to the local environment so that it is possible to view the dashboard from any browser. Finally, [Terraform](https://developer.hashicorp.com/terraform) was used to implement infrastructure-as-code, which simplifies the provisioning of AWS resources and further enhances reproducibility. 
+After developing the individual components, they were joined into a pipeline using a [Kestra](https://kestra.io/) flow for orchestration. When the [Docker](https://www.docker.com/) container is run, the entire repository is mounted as a volume inside Kestra. The [uv package manager](https://docs.astral.sh/uv/) is used for easy reproducibility, so when a user runs the flow all dependencies are automatically added to the Docker container. The Kestra flow handles every step of the ELT pipeline, followed by the dbt transformations, before running the Streamlit app inside the container. Kestra's routing features expose the correct ports to the local environment so that it is possible to view the dashboard from any browser. Finally, [Terraform](https://developer.hashicorp.com/terraform) was used to implement infrastructure-as-code, which simplifies the provisioning of AWS resources and further enhances reproducibility. 
 
 Here is a simplified overview of the stack used for my project:
 
@@ -66,7 +66,7 @@ Here is a simplified overview of the stack used for my project:
 
 ## Dashboard
 
-Here is a sample screenshot (Figure 3) of my 2-tile analytics dashboard, which was created using the Plotly and Streamlit libraries. The [dashboard is hosted](https://appdashboardpy-s3yzguguluurcbwe6rr46y.streamlit.app/) as a live, interactive web-app on the Streamlit Community Cloud. It contains a donut plot tracking the most common ARV drug class combinations prescribed to patients after a TCE. It also shows a line graph of the frequency of TCEs by year, from 1997 to 2010 only. Note that this is simply the frequency of TCEs captured in the dataset, which is not necessarily representative of broader epidemiological trends. However, the fact that TCEs peaked in 1999, which is early on after the introduction of HAART (highly-active anti-retroviral therapy) regimens makes sense as treatments have only become more effective in subsequent years.
+Here is a sample screenshot (Fig. 3) of my 2-tile analytics dashboard, which was created using the Plotly and Streamlit libraries. The [dashboard is hosted](https://appdashboardpy-s3yzguguluurcbwe6rr46y.streamlit.app/) as a live, interactive web-app on the Streamlit Community Cloud. It contains a donut plot tracking the most common ARV drug class combinations prescribed to patients after a TCE. It also shows a line graph of the frequency of TCEs by year, from 1997 to 2010 only. Note that this is simply the frequency of TCEs captured in the dataset, which is not necessarily representative of broader epidemiological trends. However, the fact that TCEs peaked in 1999, which is early on after the introduction of HAART (highly-active anti-retroviral therapy) regimens makes sense as treatments have only become more effective in subsequent years.
 
 <figure>
   <img src="./assets/dashboard_screenshot.png" style="width:100%; max-width:700px; height:auto;" />
@@ -83,30 +83,23 @@ Here is a sample screenshot (Figure 3) of my 2-tile analytics dashboard, which w
 
 2. Set up an AWS account if you do not already have one. You also need to visit `orchestration/.env` and populate the fields with details about your local environment so that Kestra can find your secrets.
 
-3. You can either provision AWS resources manually or tun `terraform apply` to have it provision resources for you.
+3. You can either provision AWS resources manually or run `terraform apply` to have it provision resources for you.
 
-<figure>
-  <img src="./assets/crawlers.png" style="width:100%; max-width:700px; height:auto;" />
-  <figcaption>
-    <p><strong>Figure 4:</strong> Screenshot of the Glue crawlers overview.</p>
-  </figcaption>
-</figure>
-
-4. Navigate to the `/orchestration/` directory and run `docker compose up -d`to start the Kestra instance. Navigate to the flows tab and choose the hiv analytics flow, then press execute.
+4. Navigate to the `/orchestration/` directory and run `docker compose up -d` to start the Kestra instance. Navigate to the flows tab and choose the `hiv_analytics_pipeline` flow, then press execute. When all 6 tasks of the flow have executed (Fig. 4), 
 
 <figure>
   <img src="./assets/kestra.png" style="width:100%; max-width:700px; height:auto;" />
   <figcaption>
-    <p><strong>Figure 5:</strong> Screenshot of a successful Kestra run.</p>
+    <p><strong>Figure 4:</strong> Screenshot of a successful Kestra run.</p>
   </figcaption>
 </figure>
    
-5. Click the link in the logs to view the Streamlit app. 
+5. Click the link (Fig. 5) in the logs to view the Streamlit app, or manually navigate to `http://localhost:8501/` in your browser. Kestra will keep the Streamlit app running inside the Docker container until you decide to terminate the process (e.g., entering `docker compose down`).
 
 <figure>
   <img src="./assets/kestra_streamlit.png" style="width:100%; max-width:700px; height:auto;" />
   <figcaption>
-    <p><strong>Figure 6:</strong> Screenshot showing which link to clink to open the Streamlit app in your browser.</p>
+    <p><strong>Figure 5:</strong> Screenshot showing which link to click to open the Streamlit app in your browser.</p>
   </figcaption>
 </figure>
 
